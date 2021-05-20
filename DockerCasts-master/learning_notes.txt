@@ -1,0 +1,25 @@
+docker run <image name> = docker create <image name> + docker start <argument> <container id>
+-create a new container from an image
+-Then, run the container
+
+docker start -a <container id>
+-watch for output  
+ 
+docker stop <container id>
+docker kill <container id>
+
+docker run <image name> <alternate command to be executed when container starts up>
+-Default commands will not be executed, they will be overriden.
+-docker run busybox echo hi there
+-the override commands must exist inside of the FS Snapshot files. "ls" will only run if it is declared inside of the filesystem of the FS Snapshot part of the image.
+
+docker ps
+-Lists all containers currently running in your machine.
+docker ps --all
+-history
+
+docker logs <container id>
+
+docker system prune
+
+
