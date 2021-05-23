@@ -1,5 +1,6 @@
 version: '3'
-services: 
+services:
+    #first container 
     web: 
         build: 
             context: . #specifies where image is going to pull files and folders from
@@ -12,3 +13,17 @@ services:
         stdin_open: true
         environment:
             - CHOKIDAR_USEPOLLING=true
+    #second container
+    tests:
+        build: 
+            context: . #specifies where image is going to pull files and folders from
+            dockerfile: Dockerfile.dev
+        volumes: #define which dir to be used and where. 
+            # the "-" represents an array
+            - /app/node_modules #bind this folder inside of the container to be mounted.
+            - .:/app #maps folder from outside the container to app folder inside the container
+        command: ["npm", "run", "test"]
+        # stdin_open: true
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+        
